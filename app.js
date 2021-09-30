@@ -49,29 +49,96 @@ if (document.getElementById("details1") && document.getElementById("details2")) 
     nbClick("details2", "section2");
 }
 
-// each letter changes color and font style when hovering the mouse over a label
-let color = ['blue', 'red', 'yellow', 'orange', 'green', 'black', 'brown', 'gray', 'brown', 'blueviolet', 'coral', 'pink'];
-let font = ['bold', 'normal'];
+let figure  = document.querySelector("figure");
+let figCaption  = document.querySelector("figcaption");
+if (figure && figCaption) {
+    // add a class
+    figure.classList = "figure";
+    figCaption.classList = "figCaption";
+    document.getElementById("div1").classList = "card-container";
+    document.getElementById("div2").classList = "card";
+    document.getElementById("div3").classList = "card-front";
+    document.getElementById("div4").classList = "card-back";
+    let fig2 = document.querySelectorAll("figcaption");
+    fig2[1].classList = "figcaption2";
+}
+
+// Retrieve a json file and display its content in HTML
+let xhr2 = new XMLHttpRequest();
+xhr2.open("GET", "first.json");
+xhr2.responseType = "json";
+
+xhr2.onload = function () {
+    let response = xhr2.response;
+
+    let createUl = document.createElement("ul");
+    let first =  document.getElementById("first");
+    first.prepend(createUl);
+
+    for (let i = 0; i < response.length; i++) {
+        let createLi = document.createElement("li");
+        createLi.innerHTML = response[i];
+        createUl.append(createLi);
+    }
+}
+xhr2.send();
+
+
+let xhr = new XMLHttpRequest();
+xhr.open("GET", "second.json");
+xhr.responseType = "json";
+
+xhr.onload = function () {
+    let response = xhr.response;
+
+    let createDl = document.createElement("dl");
+    let second =  document.getElementById("second");
+    second.prepend(createDl);
+
+    for (let i = 0; i < response.length; i++) {
+        let createDt = document.createElement("dt");
+        createDt.innerHTML = response[i][0];
+        createDl.append(createDt);
+        let createDd = document.createElement("dd");
+        createDd.innerHTML = response[i][1];
+        createDl.append(createDd);
+        if (createDd.innerHTML === response[3][1]) {
+            let createA = document.createElement("a");
+            createA.href = "https://github.com/ChloeArd";
+            createA.innerHTML = response[3][1];
+            let dd = document.querySelectorAll("dd");
+            dd[3].innerHTML = "";
+            dd[3].append(createA);
+        }
+    }
+}
+xhr.send();
 
 let span = document.querySelectorAll("span");
-document.getElementById("label1").addEventListener("mouseover",letterColorAndFont);
-document.getElementById("label2").addEventListener("mouseover",letterColorAndFont);
-document.getElementById("label3").addEventListener("mouseover",letterColorAndFont);
-document.getElementById("label4").addEventListener("mouseover",letterColorAndFont);
+if (span) {
+    // each letter changes color and font style when hovering the mouse over a label
+    let color = ['blue', 'red', 'yellow', 'orange', 'green', 'black', 'brown', 'gray', 'brown', 'blueviolet', 'coral', 'pink'];
+    let font = ['bold', 'normal'];
 
-function letterColorAndFont () {
-    let time = 500;
-    for (let x = 0; x < span.length; x++) {
-        setTimeout(function () {
-            randomColor = color[Math.floor(Math.random() * color.length)];
-            randomFont = font[Math.floor(Math.random() * font.length)];
-            span[x].style.color = randomColor;
-            span[x].style.fontWeight = randomFont;
-            span[x].style.fontStyle = "italic";
-            span[x].style.fontSize = "25px";
-            console.log(span[x]);
-        }, time);
-        time = time + 500;
+    document.getElementById("label1").addEventListener("mouseover",letterColorAndFont);
+    document.getElementById("label2").addEventListener("mouseover",letterColorAndFont);
+    document.getElementById("label3").addEventListener("mouseover",letterColorAndFont);
+    document.getElementById("label4").addEventListener("mouseover",letterColorAndFont);
+
+    function letterColorAndFont () {
+        let time = 500;
+        for (let x = 0; x < span.length; x++) {
+            setTimeout(function () {
+                randomColor = color[Math.floor(Math.random() * color.length)];
+                randomFont = font[Math.floor(Math.random() * font.length)];
+                span[x].style.color = randomColor;
+                span[x].style.fontWeight = randomFont;
+                span[x].style.fontStyle = "italic";
+                span[x].style.fontSize = "25px";
+                console.log(span[x]);
+            }, time);
+            time = time + 500;
+        }
     }
 }
 

@@ -44,10 +44,69 @@ a:hover {
     text-decoration: underline;
 }
 
+.containerImage {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .image {
-    border-radius: 50%;
     width: 200px;
-    height: 200px;
+    padding: 0;
+}
+
+.figure {
+    border: 1px solid #b4b4b4;
+    box-shadow: 10px 10px 10px gray;
+    padding: 5px;
+}
+
+.figCaption {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    margin-top: -4px;
+    font-style: italic;
+}
+
+.card-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+.card-container:hover .card {
+    transform: rotateY(180deg);
+}
+.card {
+    position: absolute;
+    height: 290px;
+    width: 213px;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+.card-front {
+    position: absolute;
+    height: 290px;
+    width: 213px;
+    backface-visibility: hidden;
+}
+.card-back {
+    position: absolute;
+    height: 290px;
+    width: 213px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+}
+
+.figcaption2 {
+    font-size: 20px;
 }
 
 #section1 {
@@ -99,6 +158,7 @@ button {
     height: 20px;
     font-size: 18px;
 }
+
 button:hover {
     background-color: #0d4da2;
 }
