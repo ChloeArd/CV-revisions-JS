@@ -34,11 +34,9 @@ for (let i = 0; i < h2.length; i++) {
         h2[i].style.fontWeight = "normal"
         h2[i].style.textShadow = "0 0 0 white";
     }, 6000);
-
 }
 
 let h3 = document.querySelectorAll("h3");
-
 
 for (let i = 0; i < h3.length; i++) {
     setInterval(function () {
