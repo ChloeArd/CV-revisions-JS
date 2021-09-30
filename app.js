@@ -2,12 +2,22 @@ let h1 = document.querySelector("h1");
 
 // Increase text size + rotate
 setTimeout(function () {
-    h1.style.fontSize = "90px";
+    h1.style.fontSize = "120px";
+    h1.style.backgroundColor = "white";
+    h1.style.border = "3px dashed black";
+    h1.style.padding = "15px";
     h1.style.position = "absolute"
+    h1.style.top = "50%";
+    h1.style.left = "50%";
     h1.style.transform = 'rotate(20deg)';
 }, 0);
 setTimeout(function () {
-    h1.style.position = "relative"
+    h1.style.position = "relative";
+    h1.style.border = "none";
+    h1.style.top = "initial";
+    h1.style.left = "initial";
+    h1.style.backgroundColor = "white";
+    h1.style.padding = "0";
     h1.style.transform = 'rotate(0deg)';
     h1.style.fontSize = "50px";
 }, 1000);
