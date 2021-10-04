@@ -137,13 +137,12 @@ if (span) {
         let time = 500;
         for (let x = 0; x < span.length; x++) {
             setTimeout(function () {
-                randomColor = color[Math.floor(Math.random() * color.length)];
-                randomFont = font[Math.floor(Math.random() * font.length)];
+                let randomColor = color[Math.floor(Math.random() * color.length)];
+                let randomFont = font[Math.floor(Math.random() * font.length)];
                 span[x].style.color = randomColor;
                 span[x].style.fontWeight = randomFont;
                 span[x].style.fontStyle = "italic";
                 span[x].style.fontSize = "25px";
-                console.log(span[x]);
             }, time);
             time = time + 500;
         }
